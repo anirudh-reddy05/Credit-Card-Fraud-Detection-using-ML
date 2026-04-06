@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <link href="../static/css/style.css" rel="stylesheet">
+  <link href="../static/css/new_style.css" rel="stylesheet">
+  <link href="../static/assets/favicon.jpg" rel="icon">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/css/login_upload_page.css') }}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+  <title>Blacklist</title>
+
+  </head>
+    <body class="bg-nav">
+      <div class="container bg-nav" style="text-align: center;">
+        <nav class="navbar navbar-light bg-light p-3">
+          <div class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between">
+            <a class="navbar-brand" href="#"> Blacklist Terminal - CSV File Data Entry </a>
+            <button class="navbar-toggler d-md-none collapsed mb-3" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+            <button style="height:50px; width:100px; font-size: 14px; font-family: Segoe UI;" class="btn-block btn-lg color" onclick="location.href = '/logout'"> Log Out </button>
+          </div>
+            <!-- <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                      Hello, username
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="{{ url_for('views.settings') }}">Settings</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Sign out</a></li>
+              </ul>
+            </div> -->
+        </nav>
+      </div>
+    </body>
+    <body class="bg-nav" style="text-align: center;">
+      <h2 style="font-family: Segoe UI"> Upload Your CSV File</h2>
+      {% if error %}
+      <div class="alert alert-danger" role="alert">
+          {{ error }}
+      </div>
+      {% endif %}
+      <br><br>
+      <form method="POST" enctype="multipart/form-data">
+        <input type="file" id="inp" name="file" accept=".csv"/>
+        <br><br>
+        <button type="submit" id="seeResultsButton" class="btn-block btn-lg color center" style="height:50px; width:200px; font-size: 14px; font-family: Segoe UI;" disabled> See Results </button>
+      </form>
+      <div class="container bg-nav" style="text-align: center;">
+              <script>
+                const fileInput = document.getElementById("inp");
+                const seeResultsButton = document.getElementById("seeResultsButton");
+                  
+                fileInput.addEventListener("change", function() {
+                  if (fileInput.files.length > 0) {
+                    seeResultsButton.disabled = false;
+                  }
+                });
+              </script>
+              <br><br>
+              <br><br>
+              <div class="notifications-container">
+                <div class="success-upload-page">
+                  <div class="flex">
+                    <div class="flex-shrink-0">
+                      
+                      <svg class="succes-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <div class="success-prompt-wrap">
+                      <p class="success-upload-prompt-heading">Job In Progress!
+                      </p><div class="success-upload-prompt" style="text-align: justify;">
+                        <p>Your Credit Card dataset is waiting to be uploaded. After a successful upload, you can see your results in the dashboard page and gain insights about our prediction system. You can also try out other models, access your old data or upload a new one, see your data analysis, and access many other premium features! If you want to access your older predictions and data, then you can click on the See Old CSV Results button and skip the upload page.</p>
+                      </div>
+                        <div class="success-button-container">
+                          <button type="button" class="success-upload-button-main" onclick="redirectToPred()">See Old CSV Results</button>
+                          <script>
+                          function redirectToPred() {
+                            window.location.href = "/prediction_output/table";
+                          }
+                          </script>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </div>
+    </body>
+</html>

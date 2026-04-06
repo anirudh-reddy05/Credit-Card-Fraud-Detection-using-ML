@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Model Debug</title>
+    <link rel="stylesheet" href="/static/../static/css/login_upload_page.css">
+  </head>
+  <body>
+    <div class="container">
+      <h2>Model Debug</h2>
+      {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+      {% endif %}
+
+      <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label>Upload single-row CSV for debugging (optional)</label>
+          <input type="file" name="file" class="form-control" />
+        </div>
+        <button class="btn btn-primary" type="submit">Run Debug</button>
+      </form>
+
+      {% if cleaned %}
+        <h3>Cleaned Input (first 50)</h3>
+        <pre>{{ cleaned[:50] }}</pre>
+        <h3>Scaled Input (first 50)</h3>
+        <pre>{{ scaled[:50] }}</pre>
+        <h3>Model Stats (mean/std first 10)</h3>
+        {% if model_stats %}
+          <pre>mean: {{ model_stats.mean[:10] }}
+std: {{ model_stats.std[:10] }}</pre>
+        {% else %}
+          <p>No model stats available.</p>
+        {% endif %}
+  <h3>Raw Output</h3>
+  <pre>{{ raw }}</pre>
+  <h3>Sigmoid(raw)</h3>
+  <pre>{{ sigmoid }}</pre>
+  <h3>Softmax(raw)</h3>
+  <pre>{{ softmax }}</pre>
+  <h3>Adjusted probability (temperature fallback)</h3>
+  <pre>{{ adjusted_prob }}</pre>
+      {% endif %}
+    </div>
+  </body>
+</html>

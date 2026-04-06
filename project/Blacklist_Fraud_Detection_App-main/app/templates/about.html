@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/css/login_upload_page.css') }}">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<title>About — Blacklist</title>
+	</head>
+	<body class="bg-nav">
+		<nav class="navbar">
+			<a href="/" class="navbar-brand" style="color: black;">Blacklist</a>
+		</nav>
+
+		<div class="container mt-5">
+			<div class="row justify-content-center">
+				<div class="col-md-10">
+					<div class="card">
+						<div class="card-body">
+							<h1 class="mb-4">About The Blacklist Project</h1>
+
+							<p>
+								The Blacklist web application is an innovative tool that uses the power of machine learning to detect and prevent credit card fraud. Our team has developed a custom model that employs various techniques to accurately classify fraudulent activity, providing users with a high level of security and peace of mind. The Blacklist architecture consists of three main components: the model, the backend, and the frontend.
+							</p>
+
+							<p>
+								The model is a supervised neural network that is enhanced by an XGBoost algorithm, which provides the most relevant features for accurate predictions. The Blacklist also uses the Python Flask module to connect the pre-trained model with the backend, enabling fast and efficient prediction of credit card data.
+							</p>
+
+							<p>
+								The frontend of the Blacklist is designed to be user-friendly and easy to navigate, making it accessible to users of all technical levels. The seamless integration of the model, backend, and frontend ensures that users receive predictions in just a couple of seconds and have a great experience using the application.
+							</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer mt-5">
+			<div style="width: 50%; float: left;">
+				<br>
+				<p><a href="/support" style="color: #F5F5F5;">Support</a></p>
+			</div>
+			<div style="width: 50%; float: right;">
+				<br>
+				<p><a href="/about" style="color: #F5F5F5;">About</a></p>
+			</div>
+		</div>
+	</body>
+</html>
